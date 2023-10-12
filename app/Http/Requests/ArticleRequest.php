@@ -24,7 +24,7 @@ class ArticleRequest extends FormRequest
         return [
             'title' => 'required|max:255',
             'body' => 'required',
-            'publish_at' => 'nullable|date',
+            'publish_at' => 'nullable|date_format:Y-m-d H:i',
         ];
     }
 }
