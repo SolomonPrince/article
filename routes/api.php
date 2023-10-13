@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\ArticleController;
+use App\Http\Controllers\API\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('article', ArticleController::class);
+Route::group(['prefix' => 'v1'], function () {
+    Route::resource('articles', ArticleController::class);
+
+    Route::post('comment', [CommentController::class, 'store']);
+});

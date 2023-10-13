@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Site\ArticleController;
+use App\Http\Controllers\Site\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::redirect('/', '/articles');
+
+Route::get('/articles', [ArticleController::class, 'index'])->name('index');
+Route::get('/articles/{slug}', [ArticleController::class, 'show'])->name('article.show');
+
+Route::post('/comment', [CommentController::class, 'store'])->name('comment.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

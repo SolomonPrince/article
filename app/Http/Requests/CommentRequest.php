@@ -24,7 +24,7 @@ class CommentRequest extends FormRequest
         return [
             'thema' => 'required|max:255',
             'text' => 'required',
-            'article_id' => 'required|exists:articles.id'
+            'article_id' => 'required|exists:articles,id'
         ];
     }
 }

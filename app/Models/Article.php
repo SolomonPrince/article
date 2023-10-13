@@ -53,7 +53,7 @@ class Article extends Model implements HasMedia
      **/
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'article_id');
+        return $this->hasMany(Comment::class, 'article_id')->orderBy('id', 'desc');
     }
     
 }

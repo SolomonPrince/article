@@ -18,7 +18,8 @@ class ArticleResource extends JsonResource
             'id' => $this->id,
             'title' => $this->title,
             'body' => $this->body,
-            'publish_at' => $this->publish_at->format('Y-m-d H:i')
+            'publish_at' => $this->publish_at->format('Y-m-d H:i'),
+            'comments' => CommentResource::collection($this->comments)
         ];
     }
 }
